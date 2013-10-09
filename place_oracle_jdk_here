@@ -1,8 +1,9 @@
 Download link is here and may change: http://www.oracle.com/technetwork/java/javase/downloads/index.html
 
-Download file should like something like jdk-7u40-linux-x64.gz, depending on what you're using to unzip 
+Download file should like jdk-7u40-linux-x64.gz, depending on what you're using to unzip 
 or install the jdk.
 
 If all else fails, try: https://www.google.com/search?q=oracle+jdk
 
+Leave jdk-7u40-linux-x64.gz in this directory.  The provisioning script will use it from there.
 
