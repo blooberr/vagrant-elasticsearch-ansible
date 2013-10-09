@@ -1,8 +1,7 @@
-Download link might be here: http://www.oracle.com/technetwork/java/javase/downloads/index.html
+Download link is here and may change: http://www.oracle.com/technetwork/java/javase/downloads/index.html
 
-Link changes from time to time.
-
-As of now, I'm using jdk 7u40. 
+Download file should like something like jdk-7u40-linux-x64.gz, depending on what you're using to unzip 
+or install the jdk.
 
 If all else fails, try: https://www.google.com/search?q=oracle+jdk
 
