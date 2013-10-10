@@ -1,0 +1,24 @@
+---
+# file: roles/common/tasks/java.yml
+# 
+- name: Copy java from mounted /vagrant
+  raw:  "cp /vagrant/jdk-7u40-linux-x64.gz /home/vagrant"
+- name: Uncompress java
+  raw:  "tar -xvf /home/vagrant/jdk-7u40-linux-x64.gz -C /home/vagrant/"
+- name: create java directory
+  raw:  "sudo mkdir -p /usr/lib/jvm"
+- name: Move java jdk1.7.0_40/ to usr lib
+  raw:  "sudo mv /home/vagrant/jdk1.7.0_40 /usr/lib/jvm/jdk1.7.0"
+- name: Install java (now)
+  raw:  "update-alternatives --install '/usr/bin/java' 'java' '/usr/lib/jvm/jdk1.7.0/bin/java' 1"
+- name: Install javac
+  raw: "update-alternatives --install '/usr/bin/javac' 'javac' '/usr/lib/jvm/jdk1.7.0/bin/javac' 1"
+- name: Install javaws
+  raw: "update-alternatives --install '/usr/bin/javaws' 'javaws' '/usr/lib/jvm/jdk1.7.0/bin/javaws' 1"
+- name: "config java"
+  raw: "update-alternatives --config java"
+- name: "config javac"
+  raw: "update-alternatives --config javac"
+- name: "config javaws"
+  raw: "update-alternatives --config javaws"
+

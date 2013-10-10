@@ -1,0 +1,28 @@
+# roles/common/tasks/node-js.yml
+---
+
+- name: Check installed version of node.js
+  shell: test "$(node -v 2> /dev/null)" = v{{node_version}}
+  register: is_node_installed
+  ignore_errors: true
+
+- name: Download latest node.js (64-bit)
+  action: "get_url url=http://nodejs.org/dist/v{{node_version}}/node-v{{node_version}}.tar.gz dest=/home/{{user}}/"
+  when: is_node_installed.rc == 1
+
+- name: Unpack node package
+  command: "tar -xvf node-v{{node_version}}.tar.gz -C /home/{{user}}/"
+  when: is_node_installed.rc == 1
+
+- name: (node.js) configure
+  command: "./configure chdir=/home/{{user}}/node-v{{node_version}}"
+  when: is_node_installed.rc == 1
+
+- name: (node.js) make 
+  command: "make chdir=/home/{{user}}/node-v{{node_version}}"
+  when: is_node_installed.rc == 1
+
+- name: (node.js) make install
+  command: "make install chdir=/home/{{user}}/node-v{{node_version}}"
+  when: is_node_installed.rc == 1
+

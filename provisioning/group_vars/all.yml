@@ -1,0 +1,10 @@
+---
+# file: group_vars/all
+# not necessary to break them out into individual groups at this stage
+user: vagrant
+es_version: "0.90.5"
+node_version: "0.10.20"
+
+
+
+

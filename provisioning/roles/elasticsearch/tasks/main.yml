@@ -1,0 +1,11 @@
+---
+# roles/elasticsearch/tasks/main.yml
+- name: Download Elasticsearch zip file
+  get_url: "url=https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-{{ es_version }}.zip dest=/home/{{ user }}"
+- name: Unzip elasticsearch zip file
+  raw: "unzip /home/{{ user }}/elasticsearch-{{ es_version }}.zip"
+- name: Move unzipped folder /elasticsearch
+  raw: "mv /home/{{ user }}/elasticsearch-{{ es_version }} /home/{{ user }}/elasticsearch"
+- name: clean up zip file
+  raw: "rm /home/{{ user }}/elasticsearch-{{ es_version }}.zip"
+

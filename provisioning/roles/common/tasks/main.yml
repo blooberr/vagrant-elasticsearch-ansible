@@ -1,0 +1,15 @@
+---
+# file: roles/common/tasks/main.yml
+- name: (main) Update apt 
+  raw:  "apt-get update -y"
+- name: (main) Install required packages with apt
+  apt: name=$item state=latest update_cache=yes
+  with_items:
+    - unzip
+    - tar
+    - vim
+    - git
+    - make
+    - g++
+- include: java.yml
+
