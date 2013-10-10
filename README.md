@@ -4,6 +4,8 @@ vagrant-elasticsearch-ansible
 DevOps demonstration for provisioning a Vagrant VM with Elasticsearch and Kibana.
 You will be able to start indexing data on Elasticsearch with minimal setup time.
 
+Please message me if you have any feedback or questions!
+
 Required software
 =============================
 
