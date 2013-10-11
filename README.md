@@ -20,3 +20,7 @@ Ansible: https://github.com/ansible/ansible
 
 Setup
 ======
+
+After setup...
+
+Run ./provisioning/provision-vm-development and let it run!
