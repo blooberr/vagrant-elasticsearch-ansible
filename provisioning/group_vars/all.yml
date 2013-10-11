@@ -4,7 +4,11 @@
 user: vagrant
 es_version: "0.90.5"
 node_version: "0.10.20"
-
+java_version_base: "1.7.0"
+jdk_version: "jdk{{ java_version_base }}"
+# like 1.7.0_40
+java_version: "{{ java_version_base }}_40" 
+jdk_name: "jdk-7u40"
 
 
 

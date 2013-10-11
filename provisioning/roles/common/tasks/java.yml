@@ -1,24 +1,48 @@
 ---
 # file: roles/common/tasks/java.yml
-# 
+
+- name: Check installed version of java
+  shell: test "$(javac -version 2> /dev/null)" = "javac {{ java_version }}"
+  register: is_jdk_installed
+  ignore_errors: true
+
 - name: Copy java from mounted /vagrant
-  raw:  "cp /vagrant/jdk-7u40-linux-x64.gz /home/vagrant"
+  raw:  "cp /vagrant/{{ jdk_name }}-linux-x64.gz /home/vagrant"
+  when: is_jdk_installed.rc == 1
+
 - name: Uncompress java
-  raw:  "tar -xvf /home/vagrant/jdk-7u40-linux-x64.gz -C /home/vagrant/"
+  raw:  "tar -xvf /home/{{ user }}/{{ jdk_name }}-linux-x64.gz -C /home/{{ user }}/"
+  when: is_jdk_installed.rc == 1
+
 - name: create java directory
   raw:  "sudo mkdir -p /usr/lib/jvm"
+  when: is_jdk_installed.rc == 1
+
 - name: Move java jdk1.7.0_40/ to usr lib
-  raw:  "sudo mv /home/vagrant/jdk1.7.0_40 /usr/lib/jvm/jdk1.7.0"
+  raw:  "sudo mv /home/vagrant/jdk{{ java_version }} /usr/lib/jvm/{{ jdk_version }}"
+  when: is_jdk_installed.rc == 1
+
 - name: Install java (now)
-  raw:  "update-alternatives --install '/usr/bin/java' 'java' '/usr/lib/jvm/jdk1.7.0/bin/java' 1"
+  raw:  "update-alternatives --install '/usr/bin/java' 'java' '/usr/lib/jvm/{{ jdk_version }}/bin/java' 1"
+  when: is_jdk_installed.rc == 1
+
 - name: Install javac
-  raw: "update-alternatives --install '/usr/bin/javac' 'javac' '/usr/lib/jvm/jdk1.7.0/bin/javac' 1"
+  raw: "update-alternatives --install '/usr/bin/javac' 'javac' '/usr/lib/jvm/{{ jdk_version }}/bin/javac' 1"
+  when: is_jdk_installed.rc == 1
+
 - name: Install javaws
-  raw: "update-alternatives --install '/usr/bin/javaws' 'javaws' '/usr/lib/jvm/jdk1.7.0/bin/javaws' 1"
+  raw: "update-alternatives --install '/usr/bin/javaws' 'javaws' '/usr/lib/jvm/{{ jdk_version }}/bin/javaws' 1"
+  when: is_jdk_installed.rc == 1
+
 - name: "config java"
   raw: "update-alternatives --config java"
+  when: is_jdk_installed.rc == 1
+
 - name: "config javac"
   raw: "update-alternatives --config javac"
+  when: is_jdk_installed.rc == 1
+
 - name: "config javaws"
   raw: "update-alternatives --config javaws"
+  when: is_jdk_installed.rc == 1
 
