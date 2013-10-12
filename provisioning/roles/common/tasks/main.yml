@@ -11,5 +11,6 @@
     - git
     - make
     - g++
+    - curl
 - include: java.yml
 
