@@ -18,8 +18,24 @@ Oracle JDK: https://www.google.com/search?q=oracle+jdk
   
 Ansible: https://github.com/ansible/ansible
 
-Setup
+Setup on MacOSX (works for me.)
 ======
+
+easy_install virtualenv
+
+virtualenv ansible-env
+
+source ansible-env/bin/activate
+
+sudo bash
+
+export ARCHFLAGS='-arch i386 -arch x86_64'
+
+easy_install pip
+
+pip install paramiko PyYAML jinja2
+
+Reference from https://weluse.de/blog/installing-ansible-on-os-x.html
 
 After setup...
 
