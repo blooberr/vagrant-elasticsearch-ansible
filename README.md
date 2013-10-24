@@ -41,3 +41,9 @@ Reference from https://weluse.de/blog/installing-ansible-on-os-x.html
 After setup...
 
 Run ./provisioning/provision-vm-development and let it run!
+
+=========
+Deploying to EC2
+
+You don't have to configure the Vagrantfile, all you need to do is modify the host file and copy the jdk file to 
+the VM. 
