@@ -27,13 +27,14 @@ virtualenv ansible-env
 
 source ansible-env/bin/activate
 
-sudo bash
+Next two lines might be optional (was required for me in 10.6.8, but not anymore in mavericks)
 
-export ARCHFLAGS='-arch i386 -arch x86_64'
+  sudo bash
+  export ARCHFLAGS='-arch i386 -arch x86_64'
 
-easy_install pip
+sudo easy_install pip
 
-pip install paramiko PyYAML jinja2
+sudo pip install paramiko PyYAML jinja2
 
 Reference from https://weluse.de/blog/installing-ansible-on-os-x.html
 
