@@ -18,9 +18,32 @@ Oracle JDK: https://www.google.com/search?q=oracle+jdk
   
 Ansible: https://github.com/ansible/ansible
 
-Setup
+Setup on MacOSX (works for me.)
 ======
+
+easy_install virtualenv
+
+virtualenv ansible-env
+
+source ansible-env/bin/activate
+
+Next two lines might be optional (was required for me in 10.6.8, but not anymore in mavericks)
+
+  sudo bash
+  export ARCHFLAGS='-arch i386 -arch x86_64'
+
+sudo easy_install pip
+
+sudo pip install paramiko PyYAML jinja2
+
+Reference from https://weluse.de/blog/installing-ansible-on-os-x.html
 
 After setup...
 
 Run ./provisioning/provision-vm-development and let it run!
+
+=========
+Deploying to EC2
+
+You don't have to configure the Vagrantfile, all you need to do is modify the host file and copy the jdk file to 
+the VM. 
