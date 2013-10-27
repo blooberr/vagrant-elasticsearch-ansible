@@ -5,6 +5,7 @@
 - name: (main) Install required packages with apt
   apt: name=$item state=latest update_cache=yes
   with_items:
+    - libcurl4-openssl-dev
     - unzip
     - tar
     - vim
